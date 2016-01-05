@@ -1,4 +1,4 @@
-<div class="container" style="color: black">
+<div class="container" style="color: black;">
 
 	<div class="dropdown" style="float: right; margin-top:10px;">
 	  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $this->session->name ?>
