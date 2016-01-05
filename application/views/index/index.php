@@ -5,6 +5,7 @@
  * Date: 3/12/15
  * Time: 8:36
  */
+$url_registro = base_url('registro');
 echo '<div class="fondo"></div>';
 echo '<header class="mainHeader">
 <div class="container">
@@ -20,20 +21,20 @@ Acceder
 </div>
 </div>
 </header>';
-echo '<div class="container principal">
+echo "<div class='container principal'>
 <h1>Crea tu nuevo sitio web gratis</h1><p><br></p>
 <h2>WordPress.com es el mejor lugar<br>para tu blog personal o tu negocio</h2>
 <p><br></p>
-<div class="botonNuevoSitio">
-<button class="btn btn-lg btn-primary">Crear sitio web</button>
+<div class='botonNuevoSitio'>
+<a class='btn btn-lg btn-primary' href='{$url_registro}'>Crear sitio web</a>
 </div>
-<div class="algoMas">
+<div class='algoMas'>
 <p>
 ¿Aún tienes dudas?
 </p>
-<p><span class="glyphicon glyphicon-chevron-down algoMasBajar"></span></p>
+<p><span class='glyphicon glyphicon-chevron-down algoMasBajar'></span></p>
 </div>
-</div>';
+</div>";
 echo '<div class="bloque">
 <div class="container">
 <p>WordPress.com es la forma más sencillad e crear un sitio web o un blog gratuitos.</p>
@@ -89,12 +90,13 @@ echo'<div class="bloqueTransparente">
 
 </div>
 </div>';
-echo '<div class="bloque">
-<div class="container">
+
+echo "<div class='bloque'>
+<div class='container'>
 <p>El 25% de internet ve vídeos de gatitos.</p><br>
-<p><button class="btn btn-lg btn-primary">Crear sitio web</button></p>
+<p><a class='btn btn-lg btn-primary' href='{$url_registro}'>Crear sitio web</a></p>
 </div>
-</div>';
+</div>";
 echo '<script>
 $(document).ready(function(){
     $(".principal").css("height",

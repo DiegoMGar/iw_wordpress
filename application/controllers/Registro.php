@@ -1,0 +1,76 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Diego
+ * Date: 5/01/16
+ * Time: 9:13
+ */
+
+class Registro extends CI_Controller {
+    public function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->helper('form');
+    }
+    public function index(){
+        $data['title'] = 'Registro';
+        $this->load->view('templates/header.php',$data);
+        $this->load->view('registro/registro.php');
+    }
+    public function action(){
+        $dominio = $this->input->post('dominio');
+        $usuario = $this->input->post('usuario');
+        $password = $this->input->post('password');
+        $titulo = $this->input->post('titulo');
+        if(empty($dominio) || empty($usuario) || empty($password) || empty($password)){
+            redirect(base_url('registro'));
+        }
+        $data['title'] = 'Registro';
+        $this->load->view('templates/header.php',$data);
+        $data['completo'] = TRUE;
+
+        $this->load->database();
+
+        $sql = "select oid from users where email = '{$usuario}' limit 1";
+        $result = $this->db->query($sql);
+        $contador = 0;
+        foreach ($result->result() as $row) $contador++;
+        if($contador>0){
+            $data['completo'] = "Ese email ya existe en la base de datos.";
+            goto nosql;
+        }
+
+        $sql = "select oid from domains where url = '{$dominio}' limit 1";
+        $result = $this->db->query($sql);
+        $contador = 0;
+        foreach ($result->result() as $row) $contador++;
+        if($contador>0){
+            $data['completo'] = "Ese dominio está ocupado por otro usuario.";
+            goto nosql;
+        }
+
+        $nick = explode('@',$usuario)[0];
+        $sql = "insert into users (nick,name,password,email) values ('{$nick}','{$nick}','{$password}','{$usuario}')";
+        if($this->db->query($sql)){
+            $id_usuario = $this->db->insert_id();
+            $sql = "insert into domains (url,user,payplan) values ('{$dominio}',$id_usuario,1)";
+            if($this->db->query($sql)){
+                $id_domain = $this->db->insert_id();
+                $sql = "insert into blogs (title,domain,theme) values ('{$titulo}',$id_domain,1)";
+                if($this->db->query($sql)){
+
+                }
+                else{
+                    $data['completo'] = 'Error creando el blog del usuario.';
+                }
+            }
+            else{
+                $data['completo'] = 'Error vinculando el usuario al dominio.';
+            }
+        }else{
+            $data['completo'] = 'Error insertando el usuario.';
+        }
+        nosql:
+        $this->load->view('registro/registro.php',$data);
+    }
+} 

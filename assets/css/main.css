@@ -162,3 +162,7 @@ footer.mainFooter>.container{
     text-align: center;
     font-weight: bold;
 }
+.login > a, .login > a:link, .login > a:visited, .login > a:hover, .login > a:active {
+    color: #ffffff;
+    cursor: pointer;
+}
