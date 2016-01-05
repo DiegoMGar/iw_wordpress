@@ -34,14 +34,15 @@ class Login extends CI_Controller {
 
 			foreach ($query->result() as $row) {
 				$newdata = array(
-			        'username'  => $row->name,
+					'id' => $row->oid,
+			        'name'  => $row->name,
 			        'email'     => $row->email,
 			        'logged_in' => TRUE
 				);
 			}
 
 			$this->session->set_userdata($newdata);
-			redirect(site_url('dashboard'), 'refresh');
+			redirect(base_url('dashboard'), 'refresh');
 		}
 
 		else 
@@ -50,7 +51,7 @@ class Login extends CI_Controller {
 			<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         	<strong>Error!</strong> Usuario o contraseña incorrectos.
   			</div>');
-			redirect(site_url('login'));
+			redirect(base_url('login'));
 		}
 
 	}
