@@ -6,7 +6,7 @@
  * Time: 9:37
  */
 class Domains_model extends CI_Model {
-    public function __construct()
+    /*public function __construct()
     {
         $this->load->database();
     }
@@ -16,5 +16,5 @@ class Domains_model extends CI_Model {
         }
         $query = $this->db->get_where('dominio', array('dominio' => $domain));
         return $query->row_array();
-    }
+    }*/
 }

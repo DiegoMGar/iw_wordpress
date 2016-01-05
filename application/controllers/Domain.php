@@ -6,7 +6,7 @@
  * Time: 8:59
  */
 class Domain extends CI_Controller {
-    public function __construct()
+    /*public function __construct()
     {
         parent::__construct();
         $this->load->model('domains_model');
@@ -27,5 +27,5 @@ class Domain extends CI_Controller {
         $this->load->view('templates/free_pen.php');
         $this->load->view('templates/premium_pen.php');
         $this->load->view('templates/footer.php');
-    }
+    }*/
 }
