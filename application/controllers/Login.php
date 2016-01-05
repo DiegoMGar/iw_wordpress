@@ -13,8 +13,8 @@ class Login extends CI_Controller {
 
 
 	public function index() {
-
-		$this->load->view('templates/header.php');
+		$data['title'] = 'Login';
+		$this->load->view('templates/header.php', $data);
 		$this->load->view('login.php');
 		//$this->load->view('templates/footer.php');
 	}

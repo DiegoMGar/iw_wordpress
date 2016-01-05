@@ -5,3 +5,5 @@
 	<br>
 	<?php echo $this->session->logged_in ?>
 </div>
+
+<a href="<?php echo site_url('/dashboard/logout');?>"><button class="btn btn-primary btn-block">Salir</button></a>s
