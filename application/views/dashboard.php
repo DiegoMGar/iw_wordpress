@@ -22,7 +22,7 @@
 	      <?php
 	        foreach ($query->result() as $row) {
             	echo '<tr>
-            			<td>' . $row->url . '</td>
+            			<td><a href=' . base_url('/blog/loader/' . $row->url) .  '>' . $row->url . '</a></td>
             			<td>' . $row->title . '</td>
             			<td>' . ($row->payplan==1 ? 'Free' : 'Pago') . '</td>
             			<td>

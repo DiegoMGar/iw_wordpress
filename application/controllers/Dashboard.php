@@ -13,25 +13,35 @@ class Dashboard extends CI_Controller {
 
 	public function index() {
 
-        $oid = $this->session->id;
+        if($this->session->logged_in == TRUE)
+        {
+            $oid = $this->session->id;
 
-        $sql = "
-            select * from domains
-            left join blogs on (blogs.domain = domains.oid)
-           where blogs.oid is not null
-           and domains.user = $oid";
-        $query = $this->db->query($sql);
+            $sql = "
+                select * from domains
+                left join blogs on (blogs.domain = domains.oid)
+               where blogs.oid is not null
+               and domains.user = $oid";
+            $query = $this->db->query($sql);
 
-        $data['title'] = 'Dashboard';
-        $data['query'] = $query;
-		$this->load->view('templates/header.php', $data);
-		$this->load->view('dashboard.php');
+            $data['title'] = 'Dashboard';
+            $data['query'] = $query;
+            $this->load->view('templates/header.php', $data);
+            $this->load->view('dashboard.php');
+        }
+
+        else
+        {
+            redirect(base_url());
+        }
+
+
 
 	}
 
     public function logout() {
         $this->session->sess_destroy();
-        redirect(base_url('login'));
+        redirect(base_url());
     }
 
 
