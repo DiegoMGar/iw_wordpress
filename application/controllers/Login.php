@@ -13,10 +13,19 @@ class Login extends CI_Controller {
 
 
 	public function index() {
-		$data['title'] = 'Login';
-		$this->load->view('templates/header.php', $data);
-		$this->load->view('login.php');
-		//$this->load->view('templates/footer.php');
+
+		if($this->session->logged_in == TRUE)
+        {
+        	redirect(base_url('dashboard'));
+        }
+
+        else
+        {
+			$data['title'] = 'Login';
+			$this->load->view('templates/header.php', $data);
+			$this->load->view('login.php');
+			//$this->load->view('templates/footer.php');
+		}
 	}
 
 	public function checkCredentials() {
