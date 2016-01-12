@@ -12,12 +12,28 @@ class Registro extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
     }
-    public function index(){
+    public function index($mylang='es'){
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $data['title'] = 'Registro';
         $this->load->view('templates/header.php',$data);
         $this->load->view('registro/registro.php');
     }
-    public function action(){
+    public function action($mylang='es'){
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $dominio = $this->input->post('dominio');
         $usuario = $this->input->post('usuario');
         $password = $this->input->post('password');

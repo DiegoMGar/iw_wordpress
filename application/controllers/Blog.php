@@ -17,7 +17,15 @@ class Blog extends CI_Controller {
 		redirect(base_url());
 	}
 
-	public function loader($url) {
+	public function loader($url,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 
 		$sql = "
 			select domains.user, domains.url, blogs.oid, blogs.title, blogs.description from domains
@@ -92,8 +100,15 @@ class Blog extends CI_Controller {
 		redirect(base_url('blog/loader/' . $url), 'refresh');
 	}
 
-	public function modifyPostView($url, $postId) {
-
+	public function modifyPostView($url, $postId,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$sql = "
 		select * from posts
 		where oid=$postId";

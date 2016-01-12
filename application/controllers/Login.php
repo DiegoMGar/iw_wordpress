@@ -12,7 +12,15 @@ class Login extends CI_Controller {
     }
 
 
-	public function index() {
+	public function index($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 
 		if($this->session->logged_in == TRUE)
         {
