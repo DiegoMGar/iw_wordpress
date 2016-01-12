@@ -1,5 +1,7 @@
 <div class="container" style="color: black;">
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">ADD</button>
+
 	<div class="dropdown" style="float: right; margin-top:10px;">
 	  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $this->session->name ?>
 	  <span class="caret"></span></button>
@@ -8,6 +10,12 @@
 	    <li><a href="<?php echo base_url('/dashboard/logout');?>">Salir</a></li>
 	  </ul>
 	</div>
+
+    <div style="margin-top: 20px;">
+    <?php if($error)
+            echo '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'. $error .'</div>'
+    ?>
+    </div>
 
 	<table class="table table-striped">
     <thead>
@@ -35,3 +43,42 @@
 	    </tbody>
   	</table>
 </div>
+
+<!-- Modal addDomainBlog-->
+<div id="addDomainBlog" class="modal fade" role="dialog" style="color: black;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Crea tu nuevo Dominio & BLog</h4>
+      </div>
+      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url('dashboard/addDomain/');?>" method="post">
+        <div class="modal-body">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Url" name="url" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Titulo" name="titulo" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="5" name="descripcion" placeholder="Descripcion"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#saveBut').click(function(e) {
+      if ($('input').val() === '') {
+        e.preventDefault();
+        alert('input is empty');
+      }
+    });
+</script>
