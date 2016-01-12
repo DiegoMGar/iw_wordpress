@@ -9,16 +9,20 @@
 <footer class="mainFooter">
 <div class="container">
     <ul class="nav nav-pills pillsFooter">
-        <li><a href="#">Aplicaciones</a></li>
-        <li><a href="#">Temas</a></li>
-        <li><a href="#">Soporte</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Vip</a></li>
-        <li><a href="#">Descubre</a></li>
-        <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#">Condiciones de servicio</a></li>
-        <li><a href="#">Privacidad</a></li>
-        <li><a href="#">Lenguaje:<span class="badge" style="font-size: 0.7em">ES</span></a></li>
+        <li><a href="#"><?php echo $this->lang->line('aplicaciones'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('temas'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('soporte'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('blog'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('vip'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('descubre'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('sobrenosotros'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('condiciones'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('privacidad'); ?></a></li>
+        <li><a href="#"><?php echo $this->lang->line('lenguaje'); ?>:<span class="badge" style="font-size: 0.7em">
+        <?php
+        echo strtoupper($mylang);
+        ?>
+        </span></a></li>
     </ul>
     <div class="powered">
         <small>powered by:</small> Diego Maroto & David Metcalf

@@ -18,12 +18,23 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($mylang='es')
 	{
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
+        $this->lang->load('index', $idiom);
+        $this->lang->load('footer', $idiom);
         $this->load->helper('url');
         $data['title'] = 'WordPress.com: crea un sitio web o un blog gratuitos';
         $this->load->view('templates/header.php',$data);
-        $this->load->view('index/index.php');
-        $this->load->view('templates/footer.php');
+        $data['mylang']=$mylang;
+        $this->load->view('index/index.php',$data);
+        $this->load->view('templates/footer.php',$data);
 	}
 }
