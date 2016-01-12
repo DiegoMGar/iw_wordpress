@@ -15,16 +15,30 @@
     }
 }
 </style>
-
-<div class="container">
+<header class="mainHeader">
+    <div class="container">
+        <div class="imagenLogo">
+            <a href="<?php echo base_url($mylang); ?>"><img class="img-responsive" id="img_logo"
+                                                            src="<?php echo base_url("assets/img/wordpress-logo-small.png");?>">
+            </a>
+        </div>
+        <div class="tituloLogo">
+            <a href="<?php echo base_url($mylang); ?>">WordPress<span style="color: rgba(255, 255, 255, 0.6); ">.com</span></a>
+        </div>
+        <div class="login openSansRegular">
+            <p style="cursor: pointer;">Volver</p>
+        </div>
+    </div>
+</header>
+<div class="container" style="margin-top: 70px;color: #404040;">
 <div id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" class="animationFade">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          <h1 class="text-center" style="color: black">Login</h1>
+          <h1 class="text-center">Login</h1>
       </div>
       <div class="modal-body">
-          <form class="form col-md-12 center-block" name="userLogin"
+          <form class="form center-block" name="userLogin"
                 action="<?php echo base_url($mylang.'/login/checkCredentials');?>" method="post">
             <div class="form-group">
               <input type="email" class="form-control input-lg" placeholder="Nombre de usuario" name="email" required>

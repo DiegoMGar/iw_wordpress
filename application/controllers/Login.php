@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 			$data['title'] = 'Login';
             $data['mylang']=$mylang;
 			$this->load->view('templates/header.php', $data);
-			$this->load->view('login.php',$data);
+			$this->load->view('login/login.php',$data);
 			//$this->load->view('templates/footer.php');
 		}
 	}
