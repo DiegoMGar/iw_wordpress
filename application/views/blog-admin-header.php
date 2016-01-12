@@ -21,7 +21,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Crea nuevo Post!</h4>
       </div>
-      <form class="form col-md-12 center-block" name="addPost" action="<?php echo base_url('/blog/addPost/' . $url);?>" method="post">
+      <form class="form col-md-12 center-block" name="addPost" action="<?php echo base_url('/blog/addPost/' . $url .'/' . $blogId);?>" method="post">
       	<div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Titulo" name="titulo" required>

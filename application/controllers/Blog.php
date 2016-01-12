@@ -42,20 +42,28 @@ class Blog extends CI_Controller {
 
         $post = $this->db->query($sql2);
 
+
+
         $data['title'] = 'Blog';
         $data['post'] = $post;
         $data['url'] = $url;
+        $data['blogId'] = $blogOID;
 		$this->load->view('templates/header.php', $data);
+
+		$userOK = false;
 
 		if($this->session->logged_in == TRUE && ($this->session->id == $domainBlog['userId']))
 		{
 			$this->load->view('blog-admin-header.php');
+			$userOK = true;
 		}
 
-		$this->load->view('blog.php');
+		$data2['userOK'] = $userOK;
+
+		$this->load->view('blog.php', $data2);
 	}
 
-	public function addPost($url) {
+	public function addPost($url, $blogId) {
 
 		$tituloPost = $this->input->post('titulo');
 		$contenidoPost = $this->input->post('contenido');
@@ -70,11 +78,21 @@ class Blog extends CI_Controller {
 			'content' => $contenidoPost,
 			'location' => null,
 			'date' => $dateHour,
-			'blog' =>  2
+			'blog' =>  $blogId
 		);
 
 		$this->db->insert('posts', $datos);
 
 		redirect(base_url('blog/loader/' . $url), 'refresh');
+	}
+
+	public function deletePost($url, $postId) {
+
+		$this->db->delete('posts', array('oid' => $postId));
+		redirect(base_url('blog/loader/' . $url), 'refresh');
+	}
+
+	public function modifyPost($url, $postId) {
+
 	}
 }
