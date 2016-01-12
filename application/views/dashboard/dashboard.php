@@ -38,13 +38,13 @@ if($error){
     echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">';
     echo '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'. $error .'</div>';
     echo '</div>';
-    //<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">ADD</button>
 }
 ?>
     <h1 style="margin-top: 70px;">Dashboard</h1>
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">Blogs</a></li>
         <li><a data-toggle="tab" href="#menu2">Actividad</a></li>
+        <li><a data-toggle="tab" href="#menu3">Acciones</a></li>
     </ul>
     <div class="tab-content">
         <div id="menu1" class="tab-pane fade in active">
@@ -100,19 +100,26 @@ if($error){
                 </tbody>
             </table>
         </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Acciones</h3>
+            <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
+                    Abrir blog
+                </button></p>
+        </div>
     </div>
 </div>
 
 <!-- Modal addDomainBlog-->
-<div id="addDomainBlog" class="modal fade" role="dialog" style="color: black;">
+<div id="addDomainBlog" class="modal fade" role="dialog" style="margin-top: 70px;color: #222222;">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Crea tu nuevo Dominio & BLog</h4>
+        <h4 class="modal-title">Crea tu nuevo Dominio & Blog</h4>
       </div>
-      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url($mylang.'/dashboard/create/');?>" method="post">
+      <form class="form col-md-12 center-block" name="addDomainBlog"
+            action="<?php echo base_url($mylang.'/blog/create/');?>" method="post">
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Url" name="url" required
@@ -128,7 +135,7 @@ if($error){
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>
       </form>
     </div>

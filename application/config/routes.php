@@ -72,13 +72,13 @@ $route['(:any)/dashboard'] = 'dashboard/index/$1';
 $route['(:any)/dashboard/logout'] = 'dashboard/logout/$1';
 
 // CRUD POST
-$route['(:any)/(:any)/post/(:any)/create'] = 'blog/addPost/$2/$3,$1';
-$route['(:any)/(:any)/post/(:any)'] = 'blog/modifyPostView/$2/$3,$1';
-$route['(:any)/(:any)/post/(:any)/modify'] = 'blog/modifyPost/$2/$3,$1';
-$route['(:any)/(:any)/post/(:any)/delete'] = 'blog/deletePost/$2/$3,$1';
+$route['(:any)/(:any)/post/(:any)/create'] = 'blog/addPost/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)'] = 'blog/modifyPostView/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)/modify'] = 'blog/modifyPost/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)/delete'] = 'blog/deletePost/$2/$3/$1';
 
-// CRUD DOMAIN
-$route['(:any)/dashboard/create'] = 'dashboard/addDomain/$1';
+// CRUD BLOG
+$route['(:any)/blog/create'] = 'dashboard/addDomain/$1';
 $route['(:any)/(:any)'] = 'blog/loader/$2/$1';
 $route['(:any)/(:any)/edit'] = 'dashboard/modifyDomainBlogView/$2/$1';
 $route['(:any)/(:any)/delete'] = 'dashboard/deleteDomain/$2/$1';

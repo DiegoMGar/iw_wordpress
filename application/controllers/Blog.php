@@ -81,7 +81,7 @@ class Blog extends CI_Controller {
 		$this->load->view('blog.php', $data);
 	}
 
-	public function addPost($url, $blogId,$mylang='es') {
+	public function addPost($url,$blogId,$mylang='es') {
         if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
             show_error("Ese lenguaje no existe");
         }
@@ -108,7 +108,7 @@ class Blog extends CI_Controller {
 
 		$this->db->insert('posts', $datos);
 
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 	}
 
 	public function deletePost($url, $postId,$mylang='es') {
@@ -121,7 +121,7 @@ class Blog extends CI_Controller {
         else
             $idiom='english';
 		$this->db->delete('posts', array('oid' => $postId));
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 	}
 
 	public function modifyPostView($url, $postId,$mylang='es') {

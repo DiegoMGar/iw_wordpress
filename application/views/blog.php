@@ -63,7 +63,13 @@
     <div class="row" style="margin: 50px 0 0 0;">
     <div class="col-xs-12 col-sm-3 col-lg-2">
         <h3>Descripción</h3>
-        <?php echo $blogData['description']; ?>
+        <?php echo $blogData['description'];
+        if(!empty($userOK)){
+            echo '<p style="margin-top: 20px;"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
+                    Añadir un post
+                </button></p>';
+        }
+        ?>
     </div>
     <div class="col-xs-12 col-sm-9 col-lg-9 col-lg-offset-1"
          style="text-align: left;margin-top: 20px;">
@@ -131,4 +137,42 @@
     </div>
     </div>
 </div>
+<!-- Modal addDomainBlog-->
+<div id="addDomainBlog" class="modal fade" role="dialog" style="margin-top: 70px;color: #222222;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Añade un nuevo post</h4>
+            </div>
+            <form class="form col-md-12 center-block" name="addDomainBlog"
+                  action="<?php echo base_url($mylang.'/'.$blogData['url'].'/post/'.$blogData['blogId'].'/create');?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Titulo" name="titulo" required
+                               maxlength="25">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" name="contenido" placeholder="Contenido"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        $('#saveBut').click(function(e) {
+            if ($('input').val() === '') {
+                e.preventDefault();
+                alert('input is empty');
+            }
+        });
+    });
+</script>
 
