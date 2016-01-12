@@ -22,8 +22,9 @@ class Registro extends CI_Controller {
         else
             $idiom='english';
         $data['title'] = 'Registro';
+        $data['mylang']=$mylang;
         $this->load->view('templates/header.php',$data);
-        $this->load->view('registro/registro.php');
+        $this->load->view('registro/registro.php',$data);
     }
     public function action($mylang='es'){
         if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
@@ -34,12 +35,13 @@ class Registro extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $data['mylang']=$mylang;
         $dominio = $this->input->post('dominio');
         $usuario = $this->input->post('usuario');
         $password = $this->input->post('password');
         $titulo = $this->input->post('titulo');
         if(empty($dominio) || empty($usuario) || empty($password) || empty($password)){
-            redirect(base_url('registro'));
+            redirect(base_url($mylang.'/registro'));
         }
         $data['title'] = 'Registro';
         $this->load->view('templates/header.php',$data);

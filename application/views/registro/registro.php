@@ -16,16 +16,17 @@
             WordPress<span style="color: rgba(255, 255, 255, 0.6); ">.com</span>
         </div>
         <div class="login openSansRegular">
-            Acceder
+            <a href="<?php echo base_url($mylang.'/login'); ?>">Acceder</a>
         </div>
         <div class="login openSansRegular">
-            <a href="<?php echo base_url(); ?>">Volver</a>
+            <a href="<?php echo base_url($mylang); ?>">Volver</a>
         </div>
     </div>
 </header>
 <div class="container" style="margin-top: 100px;color: #404040;max-width: 600px;">
 <?php if(empty($completo)){ ?>
-    <form action="<?php echo base_url('registro/action'); ?>" method="post" style="text-align: center;">
+    <form action="<?php echo base_url($mylang.'/registro/action'); ?>"
+          method="post" style="text-align: center;">
         <div class="form-group">
             <h3>Busquemos un dominio</h3>
             <h4 style="color: #87a6bc;margin-top: 25px;margin-bottom: 35px;">Elige un dominio personalizado</h4>
@@ -53,9 +54,12 @@
     </form>
 
 <?php }else if($completo===TRUE){ //El resgistro ha sido correcto ?>
-    <div class="alert alert-success"><strong>Éxito:</strong> El registro se ha realizado correctamente.</div>
+    <div class="alert alert-success"><strong>Éxito:</strong>
+        El registro se ha realizado correctamente.</div>
 <?php }else{ //Ha habido algún error y lo voy a imprimir ?>
-    <div class="alert alert-danger"><strong>Error:</strong> <?php echo $completo; ?></div>
+    <div class="alert alert-danger"><strong>Error:</strong>
+        <?php echo $completo; ?>
+    </div>
 <?php } ?>
 </div>
 </body>
