@@ -11,7 +11,15 @@ class Dashboard extends CI_Controller {
         $this->load->library('session');
     }
 
-	public function index() {
+	public function index($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 
         if($this->session->logged_in == TRUE)
         {
@@ -82,7 +90,15 @@ class Dashboard extends CI_Controller {
         redirect(base_url('dashboard'), 'refresh');
     }
 
-    public function modifyDomainBlogView($url) {
+    public function modifyDomainBlogView($url,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 
         $sql = "
             select domains.url, domains.oid dID, blogs.oid bID, blogs.title, blogs.description from domains

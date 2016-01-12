@@ -68,14 +68,19 @@ $route['404_override'] = '';
 
 $route['dashboard/addDomain'] = 'dashboard/addDomain';
 $route['dashboard/logout'] = 'dashboard/logout';
-$route['login/checkCredentials/'] = 'login/checkCredentials';
 $route['blog/addPost/(:any)/(:any)'] = 'blog/addPost/$1/$2';
 $route['blog/deletePost/(:any)/(:any)'] = 'blog/deletePost/$1/$2';
 $route['dashboard/deleteDomain/(:any)'] = 'dashboard/deleteDomain/$1';
+$route['dashboard'] = 'dashboard';
+$route['registro'] = 'registro';
+$route['login'] = 'login';
+$route['user'] = 'user';
 
 $route['(:any)'] = 'welcome/index/$1';
 $route['(:any)/registro'] = 'registro/index/$1';
+$route['(:any)/registro/action'] = 'registro/action/$1';
 $route['(:any)/login'] = 'login/index/$1';
+$route['(:any)/login/checkCredentials'] = 'login/checkCredentials/$1';
 $route['(:any)/dashboard'] = 'dashboard/index/$1';
 $route['(:any)/(:any)'] = 'blog/loader/$2/$1';
 

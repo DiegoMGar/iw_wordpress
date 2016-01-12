@@ -12,7 +12,15 @@ class Login extends CI_Controller {
     }
 
 
-	public function index() {
+	public function index($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 
 		if($this->session->logged_in == TRUE)
         {
@@ -22,14 +30,22 @@ class Login extends CI_Controller {
         else
         {
 			$data['title'] = 'Login';
+            $data['mylang']=$mylang;
 			$this->load->view('templates/header.php', $data);
-			$this->load->view('login.php');
+			$this->load->view('login.php',$data);
 			//$this->load->view('templates/footer.php');
 		}
 	}
 
-	public function checkCredentials() {
-
+	public function checkCredentials($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$userEmail = $this->input->post('email');
 		$userPass = $this->input->post('password');
 
@@ -51,7 +67,7 @@ class Login extends CI_Controller {
 			}
 
 			$this->session->set_userdata($newdata);
-			redirect(base_url('dashboard'), 'refresh');
+			redirect(base_url($mylang.'/dashboard'), 'refresh');
 		}
 
 		else 
@@ -60,7 +76,7 @@ class Login extends CI_Controller {
 			<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         	<strong>Error!</strong> Usuario o contraseña incorrectos.
   			</div>');
-			redirect(base_url('login'));
+			redirect(base_url($mylang.'/login'));
 		}
 
 	}

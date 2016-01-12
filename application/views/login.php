@@ -24,7 +24,8 @@
           <h1 class="text-center" style="color: black">Login</h1>
       </div>
       <div class="modal-body">
-          <form class="form col-md-12 center-block" name="userLogin" action="<?php echo base_url('/login/checkCredentials');?>" method="post">
+          <form class="form col-md-12 center-block" name="userLogin"
+                action="<?php echo base_url($mylang.'/login/checkCredentials');?>" method="post">
             <div class="form-group">
               <input type="email" class="form-control input-lg" placeholder="Nombre de usuario" name="email" required>
             </div>
