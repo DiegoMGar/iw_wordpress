@@ -7,6 +7,7 @@
 	  <span class="caret"></span></button>
 	  <ul class="dropdown-menu dropdown-menu-right">
 	    <li><a href="#">Perfil</a></li>
+	    <li><a href="<?php echo base_url('/dashboard');?>">DashBoard</a></li>
 	    <li><a href="<?php echo base_url('/dashboard/logout');?>">Salir</a></li>
 	  </ul>
 	</div>
