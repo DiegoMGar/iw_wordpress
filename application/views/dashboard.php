@@ -26,8 +26,8 @@
             			<td>' . $row->title . '</td>
             			<td>' . ($row->payplan==1 ? 'Free' : 'Pago') . '</td>
             			<td>
-            				<a href="#"><span class="glyphicons glyphicons-pencil"></span></a>
-            				<a href="#"><span class="glyphicons glyphicons-bin"></span></a>
+            				<a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+            				<a href="#"><span class="glyphicon glyphicon-trash"></span></a>
             			</td>
             		</tr>';
         	}
