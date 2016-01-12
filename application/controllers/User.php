@@ -11,10 +11,35 @@ class User extends CI_Controller {
         $this->load->library('session');
     }
 
-    public function index() {
+    public function index($idUser) {
 
-        $data['title'] = 'Dashboard';
-    	$this->load->view('templates/header.php', $data);
-        $this->load->view('profile.php');
+        $sql = "
+        select * from users
+        where oid=$idUser";
+        $query = $this->db->query($sql);
+
+        if($query->num_rows()==1)
+        {
+
+            foreach ($query->result() as $row) {
+                $user = array(
+                    'id' => $row->oid, 
+                    'nick' => $row->nick, 
+                    'name' => $row->name,
+                    'surname' => $row->surname,
+                    'email' => $row->email
+                );
+            }
+
+            $data['title'] = 'Dashboard';
+            $data['user'] = $user;
+        	$this->load->view('templates/header.php', $data);
+            $this->load->view('profile.php');
+        }
+
+        else
+        {
+            show_error("User not found!");
+        }
     }
 }
