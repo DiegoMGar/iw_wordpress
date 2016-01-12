@@ -34,7 +34,7 @@ class Blog extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
-
+        $data['mylang'] = $mylang;
 		$sql = "
 			select domains.user, domains.url, blogs.oid, blogs.title, blogs.description from domains
             right join blogs on (blogs.domain = domains.oid)
@@ -46,10 +46,13 @@ class Blog extends CI_Controller {
 		foreach ($query->result() as $row) {
 			$domainBlog = array(
 				'userId' => $row->user,
-				'blogId' => $row->oid
+				'blogId' => $row->oid,
+                'title'=> $row->title,
+                'description'=> $row->description,
+                'url'=>$row->url
 			);
 		}
-
+        $data['blogData'] = $domainBlog;
 		$blogOID = $domainBlog['blogId'];
 
 		$sql2 = "
@@ -60,7 +63,7 @@ class Blog extends CI_Controller {
 
 
 
-        $data['title'] = 'Blog';
+        $data['title'] = $url;
         $data['post'] = $post;
         $data['url'] = $url;
         $data['blogId'] = $blogOID;
@@ -73,9 +76,9 @@ class Blog extends CI_Controller {
 			$userOK = true;
 		}
 
-		$data2['userOK'] = $userOK;
+		$data['userOK'] = $userOK;
 
-		$this->load->view('blog.php', $data2);
+		$this->load->view('blog.php', $data);
 	}
 
 	public function addPost($url, $blogId,$mylang='es') {

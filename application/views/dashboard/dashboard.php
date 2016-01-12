@@ -26,8 +26,8 @@
         </div>
     </div>
 </header>
-<div class="container" style="margin-top: 70px;color: #404040;">
-    <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="text-align: right;">
+<div class="container" style="color: #404040;">
+    <div class="hidden-lg hidden-md hidden-sm col-xs-12 menuHidden">
         <p>
             <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">Perfil</a>
             <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</button></a>
@@ -41,7 +41,7 @@ if($error){
     //<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">ADD</button>
 }
 ?>
-    <h1>Dashboard</h1>
+    <h1 style="margin-top: 70px;">Dashboard</h1>
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">Blogs</a></li>
         <li><a data-toggle="tab" href="#menu2">Actividad</a></li>
