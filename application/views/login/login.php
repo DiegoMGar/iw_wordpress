@@ -1,3 +1,4 @@
+<body style="background: #f5f5f5;">
 <style>
 .animationFade {
 	animation: fadein 2s;
