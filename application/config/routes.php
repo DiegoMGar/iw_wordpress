@@ -75,6 +75,7 @@ $route['dashboard'] = 'dashboard';
 $route['registro'] = 'registro';
 $route['login'] = 'login';
 $route['user'] = 'user';
+$route['user/(:any)'] = 'user/index/$1';
 
 $route['(:any)'] = 'welcome/index/$1';
 $route['(:any)/registro'] = 'registro/index/$1';
