@@ -28,4 +28,3 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #config application
 application/config/config.php
-application/config/routes.php
