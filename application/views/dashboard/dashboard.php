@@ -7,7 +7,7 @@
 	  <span class="caret"></span></button>
 	  <ul class="dropdown-menu dropdown-menu-right">
 	    <li><a href="#">Perfil</a></li>
-	    <li><a href="<?php echo base_url('/dashboard/logout');?>">Salir</a></li>
+	    <li><a href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</a></li>
 	  </ul>
 	</div>
 
@@ -30,12 +30,12 @@
 	      <?php
 	        foreach ($query->result() as $row) {
             	echo '<tr>
-            			<td><a href=' . base_url('/blog/loader/' . $row->url) .  '>' . $row->url . '</a></td>
+            			<td><a href=' . base_url($mylang.'/' . $row->url) .  '>' . $row->url . '</a></td>
             			<td>' . $row->title . '</td>
             			<td>' . ($row->payplan==1 ? 'Free' : 'Pago') . '</td>
             			<td>
-            				<a href='. base_url('/dashboard/modifyDomainBlogView/' . $row->url) .'><span class="glyphicon glyphicon-pencil"></span></a>
-            				<a href='. base_url('/dashboard/deleteDomain/' . $row->url) .'><span class="glyphicon glyphicon-trash"></span></a>
+            				<a href='. base_url($mylang.'/' . $row->url.'/edit') .'><span class="glyphicon glyphicon-pencil"></span></a>
+            				<a href='. base_url($mylang.'/' . $row->url.'/delete') .'><span class="glyphicon glyphicon-trash"></span></a>
             			</td>
             		</tr>';
         	}
@@ -53,7 +53,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Crea tu nuevo Dominio & BLog</h4>
       </div>
-      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url('dashboard/addDomain/');?>" method="post">
+      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url($mylang.'/dashboard/addDomain/');?>" method="post">
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Url" name="url" required>
