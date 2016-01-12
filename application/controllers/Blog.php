@@ -92,7 +92,40 @@ class Blog extends CI_Controller {
 		redirect(base_url('blog/loader/' . $url), 'refresh');
 	}
 
-	public function modifyPost($url, $postId) {
+	public function modifyPostView($url, $postId) {
+
+		$sql = "
+		select * from posts
+		where oid=$postId";
+        $query = $this->db->query($sql);
+
+        foreach ($query->result() as $row) {
+			$post = array(
+				'id' => $row->oid, 
+				'title' => $row->title, 
+				'content' => $row->content,
+			);
+		}
+
+        $data['post'] = $post;
+        $data['url'] = $url;
+		$this->load->view('blog-modify.php', $data);
+	}
+
+	public function modifyPost ($url, $postId) {
+
+		$tituloPost = $this->input->post('titulo');
+		$contenidoPost = $this->input->post('contenido');
+
+		$data = array(
+               'title' => $tituloPost,
+               'content' => $contenidoPost
+            );
+
+		$this->db->where('oid', $postId);
+		$this->db->update('posts', $data); 
+
+		redirect(base_url('blog/loader/' . $url), 'refresh');
 
 	}
 }
