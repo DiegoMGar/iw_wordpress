@@ -44,5 +44,11 @@ class Dashboard extends CI_Controller {
         redirect(base_url());
     }
 
+    public function deleteDomain($url) {
+
+        $this->db->delete('domains', array('url' => $url));
+        redirect(base_url('dashboard'), 'refresh');
+    }
+
 
 }

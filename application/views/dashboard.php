@@ -27,7 +27,7 @@
             			<td>' . ($row->payplan==1 ? 'Free' : 'Pago') . '</td>
             			<td>
             				<a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-            				<a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+            				<a href='. base_url('/dashboard/deleteDomain/' . $row->url) .'><span class="glyphicon glyphicon-trash"></span></a>
             			</td>
             		</tr>';
         	}
