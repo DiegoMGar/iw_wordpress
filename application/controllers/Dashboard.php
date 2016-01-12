@@ -33,28 +33,44 @@ class Dashboard extends CI_Controller {
             $query = $this->db->query($sql);
 
             $data['title'] = 'Dashboard';
+            $data['mylang'] = $mylang;
             $data['query'] = $query;
             $data['error'] = $this->session->flashdata('error');
             $this->load->view('templates/header.php', $data);
-            $this->load->view('dashboard.php');
+            $this->load->view('dashboard/dashboard.php',$data);
         }
 
         else
         {
-            redirect(base_url('login'));
+            redirect(base_url($mylang.'/login'));
         }
 
 
 
 	}
 
-    public function logout() {
+    public function logout($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $this->session->sess_destroy();
-        redirect(base_url());
+        redirect(base_url($mylang));
     }
 
-    public function addDomain() {
-
+    public function addDomain($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $urlDomain = $this->input->post('url');
         $tituloBlog = $this->input->post('titulo');
         $descripcionBlog = $this->input->post('descripcion');
@@ -81,13 +97,20 @@ class Dashboard extends CI_Controller {
             {}
         }
 
-        redirect(base_url('dashboard'), 'refresh');
+        redirect(base_url($mylang.'/dashboard'), 'refresh');
     }
 
-    public function deleteDomain($url) {
-
+    public function deleteDomain($url,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $this->db->delete('domains', array('url' => $url));
-        redirect(base_url('dashboard'), 'refresh');
+        redirect(base_url($mylang.'/dashboard'), 'refresh');
     }
 
     public function modifyDomainBlogView($url,$mylang='es') {
@@ -99,6 +122,7 @@ class Dashboard extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $data['mylang']=$mylang;
 
         $sql = "
             select domains.url, domains.oid dID, blogs.oid bID, blogs.title, blogs.description from domains
@@ -124,8 +148,15 @@ class Dashboard extends CI_Controller {
 
     }
 
-    public function modifyDomainBlog($domainURL, $blogID) {
-
+    public function modifyDomainBlog($domainURL, $blogID,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
         $newURL = $this->input->post('url');
 
         $sql = "select oid from domains where url = '{$newURL}' limit 1";
@@ -157,7 +188,7 @@ class Dashboard extends CI_Controller {
             $this->db->update('domains', $domainData);
         }
 
-        redirect(base_url('dashboard'), 'refresh');
+        redirect(base_url($mylang.'/dashboard'), 'refresh');
     }
 
 }

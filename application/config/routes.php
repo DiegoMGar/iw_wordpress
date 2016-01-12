@@ -53,19 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 //URL
 
-// dashboard/addDomain dashboard/addDomain
-// dashboard/logout dashboard/logout
-// login/checkCredentials/ login/checkCredentials
-// blog/addPost/(:any)/(:any) blog/addPost/$1/$2
-// blog/deletePost/(:any)/(:any) blog/deletePost/$1/$2
-// dashboard/deleteDomain/(:any) dashboard/deleteDomain/$1
-
-// (:any)/registro registro/index/$1
-// (:any)/login login/index/$1
-// (:any)/dashboard dashboard/index/$1
-// (:any) welcome/$1
-// (:any)/(:any) blog/loader/$2/$1
-
 $route['dashboard/addDomain'] = 'dashboard/addDomain';
 $route['dashboard/logout'] = 'dashboard/logout';
 $route['blog/addPost/(:any)/(:any)'] = 'blog/addPost/$1/$2';
