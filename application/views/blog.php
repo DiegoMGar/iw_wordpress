@@ -24,7 +24,7 @@
 	                        <span class="glyphicon glyphicon-star-empty"></span>
 				        </li>
 				        <li>|</li>' ;
-			if($userOK == true)
+			if($userOK == true) //es el propietario del blog
 			{
 				echo	'<li>
 				         	<a href="' . base_url('/blog/deletePost/' . $url .'/'. $row->oid) . '"><span class="glyphicon glyphicon-trash"></span></a>

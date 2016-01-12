@@ -10,9 +10,11 @@
             <a href="<?php echo base_url($mylang); ?>">WordPress<span style="color: rgba(255, 255, 255, 0.6); ">.com</span></a>
         </div>
         <div class="login openSansRegular">
-            <p style="cursor: pointer;"
+            <p style="cursor: pointer;font-size: 1.1em;"
                id="openUserMenu"
-                ><?php echo $this->session->name ?> <span class="caret hidden-xs"></span></p>
+                ><?php echo $this->session->name ?>
+                <span style="font-size: 0.8em;" class="glyphicon glyphicon-menu-down hidden-xs"></span>
+            </p>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;border-right: 1px solid #f0f0f0;"
              id="userExit">
@@ -138,8 +140,14 @@ if($error){
         $("#openUserMenu").click(function(){
             $("#userPerfil").slideToggle();
             $("#userExit").slideToggle();
-            $("#userPerfil2").slideToggle();
-            $("#userExit2").slideToggle();
+            var menuDownUp = $(this).find("span");
+            if($(menuDownUp).hasClass("glyphicon-menu-down")){
+                $(menuDownUp).removeClass("glyphicon-menu-down");
+                $(menuDownUp).addClass("glyphicon-menu-up");
+            }else{
+                $(menuDownUp).removeClass("glyphicon-menu-up");
+                $(menuDownUp).addClass("glyphicon-menu-down");
+            }
         });
         $(".tarjeta").fadeIn("slow");
         $(".tarjeta").hover(function(){
