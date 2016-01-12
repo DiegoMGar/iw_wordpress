@@ -138,6 +138,8 @@
     </div>
 </div>
 <!-- Modal addDomainBlog-->
+<form class="form col-md-12 center-block" name="addDomainBlog"
+      action="<?php echo base_url($mylang.'/'.$blogData['url'].'/post/'.$blogData['blogId'].'/create');?>" method="post">
 <div id="addDomainBlog" class="modal fade" role="dialog" style="margin-top: 70px;color: #222222;">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -146,8 +148,6 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Añade un nuevo post</h4>
             </div>
-            <form class="form col-md-12 center-block" name="addDomainBlog"
-                  action="<?php echo base_url($mylang.'/'.$blogData['url'].'/post/'.$blogData['blogId'].'/create');?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="Titulo" name="titulo" required
@@ -161,10 +161,10 @@
                     <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
-            </form>
         </div>
     </div>
 </div>
+</form>
 <script>
     $().ready(function(){
         $('#saveBut').click(function(e) {

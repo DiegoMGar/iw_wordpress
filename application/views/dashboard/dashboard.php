@@ -108,18 +108,17 @@ if($error){
         </div>
     </div>
 </div>
-
 <!-- Modal addDomainBlog-->
+<form class="form col-md-12 center-block" name="addDomainBlog"
+      action="<?php echo base_url($mylang.'/blog/create/');?>" method="post">
 <div id="addDomainBlog" class="modal fade" role="dialog" style="margin-top: 70px;color: #222222;">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Crea tu nuevo Dominio & Blog</h4>
-      </div>
-      <form class="form col-md-12 center-block" name="addDomainBlog"
-            action="<?php echo base_url($mylang.'/blog/create/');?>" method="post">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Crea tu nuevo Dominio & Blog</h4>
+        </div>
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Url" name="url" required
@@ -132,15 +131,15 @@ if($error){
             <div class="form-group">
               <textarea class="form-control" rows="5" name="descripcion" placeholder="Descripcion"></textarea>
             </div>
-          </div>
-          <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
             <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          </div>
-      </form>
+        </div>
     </div>
   </div>
 </div>
+</form>
 <script>
     $().ready(function(){
         $('[data-toggle="tooltip"]').tooltip();

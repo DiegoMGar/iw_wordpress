@@ -54,7 +54,7 @@
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true" disabled>Registro</button>
+          <a class="btn btn-default" href="<?php base_url($mylang.'/registro') ?>" data-dismiss="modal" aria-hidden="true" >Registro</a>
       </div>  
       </div>
   </div>
