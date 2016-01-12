@@ -216,3 +216,7 @@ footer.mainFooter>.container{
     opacity: 0.85;
     background-color: #f5f5f5;
 }
+.menuHidden{
+    margin-top: 57px; margin-bottom: 20px;
+    text-align: right;border-bottom: 1px solid #aaaaaa;
+}

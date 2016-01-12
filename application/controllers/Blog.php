@@ -13,8 +13,16 @@ class Blog extends CI_Controller {
     }
 
 
-	public function index() {
-		redirect(base_url());
+	public function index($mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
+		redirect(base_url($mylang.'/dashboard'));
 	}
 
 	public function loader($url,$mylang='es') {
@@ -26,7 +34,7 @@ class Blog extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
-
+        $data['mylang'] = $mylang;
 		$sql = "
 			select domains.user, domains.url, blogs.oid, blogs.title, blogs.description from domains
             right join blogs on (blogs.domain = domains.oid)
@@ -38,10 +46,13 @@ class Blog extends CI_Controller {
 		foreach ($query->result() as $row) {
 			$domainBlog = array(
 				'userId' => $row->user,
-				'blogId' => $row->oid
+				'blogId' => $row->oid,
+                'title'=> $row->title,
+                'description'=> $row->description,
+                'url'=>$row->url
 			);
 		}
-
+        $data['blogData'] = $domainBlog;
 		$blogOID = $domainBlog['blogId'];
 
 		$sql2 = "
@@ -52,7 +63,7 @@ class Blog extends CI_Controller {
 
 
 
-        $data['title'] = 'Blog';
+        $data['title'] = $url;
         $data['post'] = $post;
         $data['url'] = $url;
         $data['blogId'] = $blogOID;
@@ -62,17 +73,23 @@ class Blog extends CI_Controller {
 
 		if($this->session->logged_in == TRUE && ($this->session->id == $domainBlog['userId']))
 		{
-			$this->load->view('blog-admin-header.php');
 			$userOK = true;
 		}
 
-		$data2['userOK'] = $userOK;
+		$data['userOK'] = $userOK;
 
-		$this->load->view('blog.php', $data2);
+		$this->load->view('blog.php', $data);
 	}
 
-	public function addPost($url, $blogId) {
-
+	public function addPost($url,$blogId,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$tituloPost = $this->input->post('titulo');
 		$contenidoPost = $this->input->post('contenido');
 
@@ -91,13 +108,20 @@ class Blog extends CI_Controller {
 
 		$this->db->insert('posts', $datos);
 
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 	}
 
-	public function deletePost($url, $postId) {
-
+	public function deletePost($url, $postId,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$this->db->delete('posts', array('oid' => $postId));
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 	}
 
 	public function modifyPostView($url, $postId,$mylang='es') {
@@ -124,11 +148,18 @@ class Blog extends CI_Controller {
 
         $data['post'] = $post;
         $data['url'] = $url;
-		$this->load->view('blog-modify.php', $data);
+		$this->load->view('blog/edit_post.php', $data);
 	}
 
-	public function modifyPost ($url, $postId) {
-
+	public function modifyPost($url, $postId,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$tituloPost = $this->input->post('titulo');
 		$contenidoPost = $this->input->post('contenido');
 
@@ -140,7 +171,7 @@ class Blog extends CI_Controller {
 		$this->db->where('oid', $postId);
 		$this->db->update('posts', $data); 
 
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 
 	}
 }
