@@ -82,5 +82,66 @@ class Dashboard extends CI_Controller {
         redirect(base_url('dashboard'), 'refresh');
     }
 
+    public function modifyDomainBlogView($url) {
+
+        $sql = "
+            select domains.url, domains.oid dID, blogs.oid bID, blogs.title, blogs.description from domains
+            left join blogs on (blogs.domain = domains.oid)
+            where blogs.oid is not null
+            and domains.url = '{$url}'";
+        $query = $this->db->query($sql);
+
+        foreach ($query->result() as $row) {
+            $domainBlog = array(
+                'domainURL' => $row->url,
+                'domainID' => $row->dID, 
+                'blogID' => $row->bID, 
+                'title' => $row->title,
+                'description' => $row->description
+            );
+        }
+
+        $data['url'] = $url;
+        $data['domainBlog'] = $domainBlog;
+
+        $this->load->view('domain-blog-modify.php', $data);
+
+    }
+
+    public function modifyDomainBlog($domainURL, $blogID) {
+
+        $newURL = $this->input->post('url');
+
+        $sql = "select oid from domains where url = '{$newURL}' limit 1";
+        $result = $this->db->query($sql);
+        $contador = 0;
+        foreach ($result->result() as $row) $contador++;
+        if($contador>0){
+            $this->session->set_flashdata('error', 'Ese dominio está ocupado por otro usuario.');
+        }
+
+        else
+        {
+            $blogTitulo = $this->input->post('titulo');
+            $blogDescripcion = $this->input->post('descripcion');
+
+            $blogData = array(
+                   'title' => $blogTitulo,
+                   'description' => $blogDescripcion
+                );
+
+            $domainData = array(
+                   'url' => $newURL
+                );
+
+            $this->db->where('oid', $blogID);
+            $this->db->update('blogs', $blogData); 
+
+            $this->db->where('url', $domainURL);
+            $this->db->update('domains', $domainData);
+        }
+
+        redirect(base_url('dashboard'), 'refresh');
+    }
 
 }
