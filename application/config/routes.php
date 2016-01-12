@@ -69,7 +69,7 @@ $route['(:any)/registro/action'] = 'registro/action/$1';
 $route['(:any)/login'] = 'login/index/$1';
 $route['(:any)/login/checkCredentials'] = 'login/checkCredentials/$1';
 $route['(:any)/dashboard'] = 'dashboard/index/$1';
-$route['(:any)/dashboard/logout'] = 'dashboard/logout/$1';
+$route['(:any)/logout'] = 'dashboard/logout/$1';
 
 // CRUD POST
 $route['(:any)/(:any)/post/(:any)/create'] = 'blog/addPost/$2/$3/$1';

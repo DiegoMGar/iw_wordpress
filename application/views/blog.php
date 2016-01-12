@@ -19,7 +19,7 @@
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;border-right: 1px solid #f0f0f0;"
              id="userExit">
-            <a href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</button></a>
+            <a href="<?php echo base_url($mylang.'/logout');?>">Salir</button></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
                    id="userPerfil">
