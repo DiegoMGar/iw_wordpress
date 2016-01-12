@@ -112,7 +112,7 @@ if($error){
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Crea tu nuevo Dominio & BLog</h4>
       </div>
-      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url($mylang.'/dashboard/addDomain/');?>" method="post">
+      <form class="form col-md-12 center-block" name="addDomainBlog" action="<?php echo base_url($mylang.'/dashboard/create/');?>" method="post">
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="Url" name="url" required

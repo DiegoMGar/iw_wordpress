@@ -105,8 +105,8 @@
                             <?php
                             if(!empty($userOK)) //es el propietario del blog
                             {
-                            $deleteUrl = base_url($mylang.'/'.$blogData['url'].'/delete');
-                            $editUrl = base_url($mylang.'/'.$blogData['url'].'/edit');
+                            $deleteUrl = base_url($mylang.'/'.$blogData['url'].'/post/'.$row->oid.'/delete');
+                            $editUrl = base_url($mylang.'/'.$blogData['url'].'/post/'.$row->oid);
                             ?>
                             <li>
                                 <a href='<?php echo $editUrl;?>' class='editLink'

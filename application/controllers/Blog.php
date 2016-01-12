@@ -148,11 +148,18 @@ class Blog extends CI_Controller {
 
         $data['post'] = $post;
         $data['url'] = $url;
-		$this->load->view('blog-modify.php', $data);
+		$this->load->view('blog/edit_post.php', $data);
 	}
 
-	public function modifyPost ($url, $postId) {
-
+	public function modifyPost($url, $postId,$mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
 		$tituloPost = $this->input->post('titulo');
 		$contenidoPost = $this->input->post('contenido');
 
@@ -164,7 +171,7 @@ class Blog extends CI_Controller {
 		$this->db->where('oid', $postId);
 		$this->db->update('posts', $data); 
 
-		redirect(base_url('blog/loader/' . $url), 'refresh');
+		redirect(base_url($mylang.'/'.$url), 'refresh');
 
 	}
 }
