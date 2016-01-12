@@ -11,7 +11,16 @@ class User extends CI_Controller {
         $this->load->library('session');
     }
 
-    public function index($idUser) {
+    public function index($idUser, $mylang='es') {
+        if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
+            show_error("Ese lenguaje no existe");
+        }
+        $idiom='';
+        if(strcmp($mylang,'es')==0)
+            $idiom='spanish';
+        else
+            $idiom='english';
+        $data['mylang'] = $mylang;
 
         $sql = "
         select * from users
