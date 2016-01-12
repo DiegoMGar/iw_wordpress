@@ -32,9 +32,17 @@ class Dashboard extends CI_Controller {
                and domains.user = $oid";
             $query = $this->db->query($sql);
 
+            $sql = "
+                SELECT posts.title title, posts.date date FROM posts left join blogs on(blogs.oid = posts.blog)
+                left join domains on (blogs.domain = domains.oid)
+                where blogs.oid is not null and domains.oid is not null
+                and domains.user = $oid";
+            $historial = $this->db->query($sql);
+
             $data['title'] = 'Dashboard';
             $data['mylang'] = $mylang;
             $data['query'] = $query;
+            $data['historial'] = $historial;
             $data['error'] = $this->session->flashdata('error');
             $this->load->view('templates/header.php', $data);
             $this->load->view('dashboard/dashboard.php',$data);
