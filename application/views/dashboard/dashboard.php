@@ -101,7 +101,7 @@ if($error){
             </table>
         </div>
         <div id="menu3" class="tab-pane fade">
-            <h3>Acciones</h3>
+            <h3 style="margin-bottom: 20px;">Acciones</h3>
             <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
                     Abrir blog
                 </button></p>
