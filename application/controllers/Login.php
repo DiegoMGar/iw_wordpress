@@ -24,11 +24,12 @@ class Login extends CI_Controller {
 
 		if($this->session->logged_in == TRUE)
         {
-        	redirect(base_url('dashboard'));
+        	redirect(base_url($mylang.'/dashboard'));
         }
 
         else
         {
+            $this->lang->load('general', $idiom);
 			$data['title'] = 'Login';
             $data['mylang']=$mylang;
 			$this->load->view('templates/header.php', $data);

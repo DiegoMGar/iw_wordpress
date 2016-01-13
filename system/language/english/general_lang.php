@@ -59,7 +59,7 @@ $lang['activity_title'] = 'Title';
 $lang['activity_date'] = 'Date';
 
 $lang['actions_title'] = 'Actions';
-$lang['actions_button'] = 'New blog';
+$lang['actions_button'] = 'Create blog';
 $lang['actions_model_title'] = 'Create your new Domain & Blog';
 $lang['actions_model__blog_title'] = 'Title';
 $lang['actions_model__blog_descr'] = 'Description';
@@ -81,3 +81,32 @@ $lang['blog_model_post_title'] = 'Title';
 $lang['blog_model_post_content'] = 'Content';
 $lang['blog_model_post_save'] = 'Save';
 $lang['blog_model_post_close'] = 'Close';
+
+/* LOGIN */
+
+$lang['volver'] = 'Back';
+$lang['login'] = 'Log In';
+$lang['email'] = 'User\'s email';
+$lang['password'] = 'Password';
+$lang['entrar'] = 'Send';
+$lang['registro'] = 'Register';
+
+/* REGISTRO */
+
+$lang['acceder'] = 'Log In';
+$lang['titulo1'] = 'Let\'s search a domain';
+$lang['titulo2'] = 'Choose your custom domain';
+$lang['dominio'] = 'example.com';
+$lang['titulo3'] = 'Write the title of your blog';
+$lang['blog'] = 'Blog\'s title';
+$lang['titulo4'] = 'Configure your security';
+$lang['titulo5'] = 'Choose your email and password';
+$lang['gratis'] = 'Free';
+$lang['premium'] = 'Premium';
+$lang['negocios'] = 'Business';
+$lang['aceptar'] = 'Accept';
+$lang['exito'] = 'Success';
+$lang['correctoRegistro'] = 'The registration has success.';
+$lang['error'] = 'Error';
+$lang['usuarioUsado'] = 'This email is already taken.';
+$lang['dominioUsado'] = 'This domain is already taken.';

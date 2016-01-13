@@ -23,6 +23,7 @@ class Registro extends CI_Controller {
             $idiom='english';
         $data['title'] = 'Registro';
         $data['mylang']=$mylang;
+        $this->lang->load('general',$idiom);
         $this->load->view('templates/header.php',$data);
         $this->load->view('registro/registro.php',$data);
     }
@@ -36,6 +37,7 @@ class Registro extends CI_Controller {
         else
             $idiom='english';
         $data['mylang']=$mylang;
+        $this->lang->load('general',$idiom);
         $dominio = $this->input->post('dominio');
         $usuario = $this->input->post('usuario');
         $password = $this->input->post('password');
@@ -54,7 +56,7 @@ class Registro extends CI_Controller {
         $contador = 0;
         foreach ($result->result() as $row) $contador++;
         if($contador>0){
-            $data['completo'] = "Ese email ya existe en la base de datos.";
+            $data['completo'] = $this->lang->line('usuarioUsado');
             goto nosql;
         }
 
@@ -63,7 +65,7 @@ class Registro extends CI_Controller {
         $contador = 0;
         foreach ($result->result() as $row) $contador++;
         if($contador>0){
-            $data['completo'] = "Ese dominio está ocupado por otro usuario.";
+            $data['completo'] = $this->lang->line('dominioUsado');
             goto nosql;
         }
 

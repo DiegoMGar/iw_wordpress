@@ -82,4 +82,32 @@ $lang['blog_model_post_content'] = 'Contenido';
 $lang['blog_model_post_save'] = 'Guardar';
 $lang['blog_model_post_close'] = 'Cerrar';
 
+/* LOGIN */
+
+$lang['volver'] = 'Volver';
+$lang['login'] = 'Acceder';
+$lang['email'] = 'iw@example.com';
+$lang['password'] = 'Contraseña';
+$lang['entrar'] = 'Entrar';
+$lang['registro'] = 'Registro';
+
+/* REGISTRO */
+
+$lang['acceder'] = 'Acceder';
+$lang['titulo1'] = 'Busquemos un dominio';
+$lang['titulo2'] = 'Elige un dominio personalizado';
+$lang['dominio'] = 'example.com';
+$lang['titulo3'] = 'Pon un título al blog que estás creando';
+$lang['blog'] = 'Título del blog';
+$lang['titulo4'] = 'Establece tus credenciales';
+$lang['titulo5'] = 'Introduce tu email y tu contraseña';
+$lang['gratis'] = 'Gratis';
+$lang['premium'] = 'Premium';
+$lang['negocios'] = 'Negocios';
+$lang['aceptar'] = 'Aceptar';
+$lang['exito'] = 'Éxito';
+$lang['correctoRegistro'] = 'El resgistro ha sido un éxito.';
+$lang['error'] = 'Error';
+$lang['usuarioUsado'] = 'Ese email ya existe en la base de datos.';
+$lang['dominioUsado'] = 'Ese dominio está ocupado por otro usuario.';
 
