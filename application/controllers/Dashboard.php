@@ -142,7 +142,7 @@ class Dashboard extends CI_Controller {
         foreach ($query->result() as $row) {
             $domainBlog = array(
                 'domainURL' => $row->url,
-                'domainID' => $row->dID, 
+                'domainID' => $row->dID,
                 'blogID' => $row->bID, 
                 'title' => $row->title,
                 'description' => $row->description
@@ -151,8 +151,8 @@ class Dashboard extends CI_Controller {
 
         $data['url'] = $url;
         $data['domainBlog'] = $domainBlog;
-
-        $this->load->view('domain-blog-modify.php', $data);
+        $this->load->view('templates/header.php', $data);
+        $this->load->view('blog/edit_blog.php', $data);
 
     }
 
@@ -167,7 +167,7 @@ class Dashboard extends CI_Controller {
             $idiom='english';
         $newURL = $this->input->post('url');
 
-        $sql = "select oid from domains where url = '{$newURL}' limit 1";
+        $sql = "select oid from domains where url = '{$newURL}' and oid <> {$blogID} limit 1";
         $result = $this->db->query($sql);
         $contador = 0;
         foreach ($result->result() as $row) $contador++;
