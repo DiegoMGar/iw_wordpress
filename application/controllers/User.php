@@ -8,7 +8,7 @@ class User extends CI_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->library('session');
+        $this->load->model('read_session');
     }
 
     public function index($idUser, $mylang='es') {
@@ -22,6 +22,8 @@ class User extends CI_Controller {
             $idiom='english';
         $data['mylang'] = $mylang;
         $this->lang->load('general',$idiom);
+        if(!$this->read_session->isSessionActive() || $idUser!=$this->session->id)
+            show_error($this->lang->line('userNotAllowed'));
         $sql = "
         select * from users
         where oid=$idUser";
@@ -29,7 +31,6 @@ class User extends CI_Controller {
 
         if($query->num_rows()==1)
         {
-
             foreach ($query->result() as $row) {
                 $user = array(
                     'id' => $row->oid, 
@@ -44,11 +45,9 @@ class User extends CI_Controller {
             $data['user'] = $user;
         	$this->load->view('templates/header.php', $data);
             $this->load->view('profile.php');
-        }
-
-        else
+        }else
         {
-            show_error("User not found!");
+            show_error($this->lang->line('userNotFound'));
         }
     }
 }

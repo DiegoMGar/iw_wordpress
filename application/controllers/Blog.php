@@ -9,7 +9,7 @@ class Blog extends CI_Controller {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->helper('date');
-        $this->load->library('session');
+        $this->load->model('read_session');
     }
 
 

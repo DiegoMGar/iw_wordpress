@@ -11,8 +11,13 @@ class Registro extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
+        $this->load->model('read_session');
     }
     public function index($mylang='es'){
+        if($this->read_session->isSessionActive() == TRUE)
+        {
+            redirect(base_url($mylang.'/dashboard'));
+        }
         if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
             show_error("Ese lenguaje no existe");
         }
@@ -28,6 +33,10 @@ class Registro extends CI_Controller {
         $this->load->view('registro/registro.php',$data);
     }
     public function action($mylang='es'){
+        if($this->read_session->isSessionActive() == TRUE)
+        {
+            redirect(base_url($mylang.'/dashboard'));
+        }
         if(strcmp($mylang,'es')!=0 && strcmp($mylang,'en')!=0){
             show_error("Ese lenguaje no existe");
         }

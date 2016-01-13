@@ -114,3 +114,6 @@ $lang['error'] = 'Error';
 $lang['usuarioUsado'] = 'Ese email ya existe en la base de datos.';
 $lang['dominioUsado'] = 'Ese dominio está ocupado por otro usuario.';
 $lang['error'] = 'Error en la base de datos logueando al nuevo usuario.';
+
+$lang['userNotFound'] = 'No se ha podido encontrar al usuario.';
+$lang['userNotAllowed'] = 'No tienes permiso para revisar el perfil de este usuario.';
