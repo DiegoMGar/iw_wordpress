@@ -73,6 +73,7 @@ $lang['actions_model__blog_close'] = 'Cancel';
 $lang['description'] = 'Description';
 $lang['new_post'] = 'Add post';
 $lang['post_author'] = 'Author';
+$lang['comments'] = 'comments';
 
 $lang['post_edit'] = 'Modify';
 $lang['post_delete'] = 'Delete';

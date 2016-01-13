@@ -73,6 +73,7 @@ $lang['actions_model__blog_close'] = 'Cerrar';
 $lang['description'] = 'Descripción';
 $lang['new_post'] = 'Añadir un post';
 $lang['post_author'] = 'Autor';
+$lang['comments'] = 'comentarios';
 
 $lang['post_edit'] = 'Editar';
 $lang['post_delete'] = 'Eliminar';
@@ -112,4 +113,3 @@ $lang['correctoRegistro'] = 'El resgistro ha sido un éxito.';
 $lang['error'] = 'Error';
 $lang['usuarioUsado'] = 'Ese email ya existe en la base de datos.';
 $lang['dominioUsado'] = 'Ese dominio está ocupado por otro usuario.';
-

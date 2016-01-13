@@ -19,15 +19,15 @@
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;border-right: 1px solid #f0f0f0;"
              id="userExit">
-            <a href="<?php echo base_url($mylang.'/logout');?>">Salir</button></a>
+            <a href="<?php echo base_url($mylang.'/logout');?>"><?php echo $this->lang->line('header_logout'); ?></button></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
                    id="userPerfil">
-            <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">Perfil</a>
+            <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
              id="userDash">
-            <a href="<?php echo base_url($mylang.'/dashboard'); ?>">Dashboard</a>
+            <a href="<?php echo base_url($mylang.'/dashboard'); ?>"><?php echo $this->lang->line('titulo_dashboard'); ?></a>
         </div>
     </div>
     <?php noAdmin: ?>
@@ -53,20 +53,20 @@
 <div class="container" style="color: #404040;text-align: center;">
     <div class="hidden-lg hidden-md hidden-sm col-xs-12 menuHidden">
         <p>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard'); ?>">Dashboard</a>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">Perfil</a>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</button></a>
+            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard'); ?>"><?php echo $this->lang->line('titulo_dashboard'); ?></a>
+            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
+            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>"><?php echo $this->lang->line('header_logout'); ?></button></a>
         </p>
     </div>
     <h1 style="margin-top: 110px;"><?php echo $url; ?></h1>
     <h2><?php echo $blogData['title']; ?></h2>
     <div class="row" style="margin: 50px 0 0 0;">
     <div class="col-xs-12 col-sm-3 col-lg-2">
-        <h3>Descripción</h3>
+        <h3><?php echo $this->lang->line('description'); ?></h3>
         <?php echo $blogData['description'];
         if(!empty($userOK)){
             echo '<p style="margin-top: 20px;"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
-                    Añadir un post
+                    '.$this->lang->line('new_post').'
                 </button></p>';
         }
         ?>
@@ -85,7 +85,7 @@
                         <img class="media-object" src="http://lorempixel.com/150/150/sports">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Autor: <?php echo $this->session->name;?></h4>
+                        <h4 class="media-heading"><?php echo $this->lang->line('post_author'); ?>: <?php echo $this->session->name;?></h4>
                         <p style="text-align: justify;"><?php echo $row->content;?></p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             </span></li>
                             <li>|</li>
                             <span><i class="glyphicon glyphicon-comment"></i>
-                                2 comments</span>
+                                2 <?php echo $this->lang->line('comments'); ?></span>
                             <li>|</li>
                             <li>
                                 <span class="glyphicon glyphicon-star"></span>
@@ -116,11 +116,11 @@
                             ?>
                             <li>
                                 <a href='<?php echo $editUrl;?>' class='editLink'
-                                   data-toggle='tooltip' data-placement='top' title='Editar'>
+                                   data-toggle='tooltip' data-placement='top' title='<?php echo $this->lang->line('post_edit'); ?>'>
                                     <span class='glyphicon glyphicon-pencil'></span>
                                 </a>
                                 <a href='<?php echo $deleteUrl;?>' class='deleteLink'
-                                   data-toggle='tooltip' data-placement='top' title='Eliminar'>
+                                   data-toggle='tooltip' data-placement='top' title='<?php echo $this->lang->line('post_delete'); ?>'>
                                     <span class='glyphicon glyphicon-trash'></span>
                                 </a>
 				        </li>
@@ -146,20 +146,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Añade un nuevo post</h4>
+                <h4 class="modal-title"><?php echo $this->lang->line('blog_model_title'); ?></h4>
             </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Titulo" name="titulo" required
+                        <input type="text" class="form-control input-lg" placeholder="<?php echo $this->lang->line('blog_model_post_title'); ?>" name="titulo" required
                                maxlength="25">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="5" name="contenido" placeholder="Contenido"></textarea>
+                        <textarea class="form-control" rows="5" name="contenido" placeholder="<?php echo $this->lang->line('blog_model_post_content'); ?>"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit" value="Submit" id="saveBut">Guardar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" value="Submit" id="saveBut"><?php echo $this->lang->line('blog_model_post_save'); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->lang->line('blog_model_post_close'); ?></button>
                 </div>
         </div>
     </div>

@@ -21,7 +21,7 @@ class User extends CI_Controller {
         else
             $idiom='english';
         $data['mylang'] = $mylang;
-
+        $this->lang->load('general',$idiom);
         $sql = "
         select * from users
         where oid=$idUser";

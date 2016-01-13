@@ -47,11 +47,15 @@
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;border-right: 1px solid #f0f0f0;"
              id="userExit">
-            <a href="<?php echo base_url($mylang.'/logout');?>">Salir</button></a>
+            <a href="<?php echo base_url($mylang.'/logout');?>"><?php echo $this->lang->line('header_logout'); ?></button></a>
+        </div>
+        <div class="login openSansRegular hidden-xs" style="display: none;"
+             id="userPerfil">
+            <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
              id="userDash">
-            <a href="<?php echo base_url($mylang.'/dashboard'); ?>">Dashboard</a>
+            <a href="<?php echo base_url($mylang.'/dashboard'); ?>"><?php echo $this->lang->line('titulo_dashboard'); ?></a>
         </div>
     </div>
     <script>
