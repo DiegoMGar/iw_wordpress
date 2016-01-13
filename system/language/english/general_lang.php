@@ -113,3 +113,4 @@ $lang['correctoRegistro'] = 'The registration has success.';
 $lang['error'] = 'Error';
 $lang['usuarioUsado'] = 'This email is already taken.';
 $lang['dominioUsado'] = 'This domain is already taken.';
+$lang['error'] = 'Error in databases login the new user.';

@@ -78,7 +78,27 @@ class Registro extends CI_Controller {
                 $id_domain = $this->db->insert_id();
                 $sql = "insert into blogs (title,domain,theme) values ('{$titulo}',$id_domain,1)";
                 if($this->db->query($sql)){
+                    $sql = "SELECT * FROM users WHERE email = ? and password = ?";
+                    $query = $this->db->query($sql, array($usuario, $password));
+                    if($query->num_rows()==1)
+                    {
 
+                        $newdata = null;
+
+                        foreach ($query->result() as $row) {
+                            $newdata = array(
+                                'id' => $row->oid,
+                                'name'  => $row->name,
+                                'email'     => $row->email,
+                                'logged_in' => TRUE
+                            );
+                        }
+                        $this->load->library('session');
+                        $this->session->set_userdata($newdata);
+                        redirect(base_url($mylang.'/dashboard'), 'refresh');
+                    }else{
+                        $data['completo'] = 'Error creando el blog del usuario.';
+                    }
                 }
                 else{
                     $data['completo'] = 'Error creando el blog del usuario.';

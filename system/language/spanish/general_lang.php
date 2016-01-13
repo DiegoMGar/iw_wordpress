@@ -113,3 +113,4 @@ $lang['correctoRegistro'] = 'El resgistro ha sido un éxito.';
 $lang['error'] = 'Error';
 $lang['usuarioUsado'] = 'Ese email ya existe en la base de datos.';
 $lang['dominioUsado'] = 'Ese dominio está ocupado por otro usuario.';
+$lang['error'] = 'Error en la base de datos logueando al nuevo usuario.';
