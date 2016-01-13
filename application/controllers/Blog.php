@@ -78,7 +78,7 @@ class Blog extends CI_Controller {
 
 		$data['userOK'] = $userOK;
 
-		$this->load->view('blog.php', $data);
+		$this->load->view('blog/blog.php', $data);
 	}
 
 	public function addPost($url,$blogId,$mylang='es') {
@@ -133,6 +133,7 @@ class Blog extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $data['mylang'] = $mylang;
 		$sql = "
 		select * from posts
 		where oid=$postId";
@@ -148,6 +149,7 @@ class Blog extends CI_Controller {
 
         $data['post'] = $post;
         $data['url'] = $url;
+        $this->load->view('templates/header.php', $data);
 		$this->load->view('blog/edit_post.php', $data);
 	}
 

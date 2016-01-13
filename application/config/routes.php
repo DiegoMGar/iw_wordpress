@@ -81,6 +81,7 @@ $route['(:any)/(:any)/post/(:any)/delete'] = 'blog/deletePost/$2/$3/$1';
 $route['(:any)/blog/create'] = 'dashboard/addDomain/$1';
 $route['(:any)/(:any)'] = 'blog/loader/$2/$1';
 $route['(:any)/(:any)/edit'] = 'dashboard/modifyDomainBlogView/$2/$1';
+$route['(:any)/(:any)/edit/(:any)'] = 'dashboard/modifyDomainBlog/$2/$3/$1';
 $route['(:any)/(:any)/delete'] = 'dashboard/deleteDomain/$2/$1';
 
 $route['translate_uri_dashes'] = FALSE;

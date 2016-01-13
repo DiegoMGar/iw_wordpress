@@ -64,14 +64,18 @@
                 </div>
                 <div class="modal-body">
                     <form class="form center-block" name="userLogin"
-                          action="<?php echo base_url($mylang.'/'.$url.'/post/'.$post['id'].'/modify');?>" method="post">
+                          action="<?php echo base_url($mylang.'/'.$url.'/edit/'.$domainBlog['blogID']);?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" placeholder="Nombre de usuario"
-                                   name="titulo" value="<?php echo $post['title']; ?>" required>
+                            <input type="text" class="form-control input-lg"
+                                   placeholder="Url" name="url" value="<?php echo $domainBlog['domainURL']; ?>" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="5" name="contenido"
-                                      placeholder="Contenido" required><?php echo $post['content']; ?></textarea>
+                            <input type="text" class="form-control input-lg" placeholder="Titulo"
+                                   name="titulo" value="<?php echo $domainBlog['title']; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" name="descripcion"
+                                      placeholder="Descripcion" required><?php echo $domainBlog['description']; ?></textarea>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">Guardar</button>

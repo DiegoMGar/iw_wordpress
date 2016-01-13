@@ -33,14 +33,14 @@
             <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</button></a>
         </p>
     </div>
-<?php
-if($error){
-    echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">';
-    echo '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'. $error .'</div>';
-    echo '</div>';
-}
-?>
     <h1 style="margin-top: 70px;">Dashboard</h1>
+    <?php
+    if($error){
+        echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">';
+        echo '<div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'. $error .'</div>';
+        echo '</div>';
+    }
+    ?>
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">Blogs</a></li>
         <li><a data-toggle="tab" href="#menu2">Actividad</a></li>
