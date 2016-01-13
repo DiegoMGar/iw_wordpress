@@ -49,9 +49,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
-$route['welcome'] = '404';
-$route['(:any)/(:any)'] = 'domain/index/$2';
-$route['(:any)'] = 'domain/index/$1';
+
+//$route['dashboard/deleteDomain/(:any)'] = 'dashboard/deleteDomain/$1';
+//$route['blog/addPost/(:any)/(:any)'] = 'blog/addPost/$1/$2';
+//$route['blog/deletePost/(:any)/(:any)'] = 'blog/deletePost/$1/$2';
+
+$route['dashboard'] = 'dashboard';
+$route['registro'] = 'registro';
+$route['login'] = 'login';
+$route['user'] = 'user';
+$route['(:any)/user/(:any)'] = 'user/index/$2/$1';
+
+$route['(:any)'] = 'welcome/index/$1';
+$route['(:any)/registro'] = 'registro/index/$1';
+$route['(:any)/registro/action'] = 'registro/action/$1';
+$route['(:any)/login'] = 'login/index/$1';
+$route['(:any)/login/checkCredentials'] = 'login/checkCredentials/$1';
+$route['(:any)/dashboard'] = 'dashboard/index/$1';
+$route['(:any)/logout'] = 'dashboard/logout/$1';
+
+// CRUD POST
+$route['(:any)/(:any)/post/(:any)/create'] = 'blog/addPost/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)'] = 'blog/modifyPostView/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)/modify'] = 'blog/modifyPost/$2/$3/$1';
+$route['(:any)/(:any)/post/(:any)/delete'] = 'blog/deletePost/$2/$3/$1';
+
+// CRUD BLOG
+$route['(:any)/blog/create'] = 'dashboard/addDomain/$1';
+$route['(:any)/(:any)'] = 'blog/loader/$2/$1';
+$route['(:any)/(:any)/edit'] = 'dashboard/modifyDomainBlogView/$2/$1';
+$route['(:any)/(:any)/edit/(:any)'] = 'dashboard/modifyDomainBlog/$2/$3/$1';
+$route['(:any)/(:any)/delete'] = 'dashboard/deleteDomain/$2/$1';
+
 $route['translate_uri_dashes'] = FALSE;
