@@ -147,6 +147,7 @@ class Dashboard extends CI_Controller {
             );
         }
 
+        $data['title'] = 'Dashboard';
         $data['url'] = $url;
         $data['domainBlog'] = $domainBlog;
         $this->load->view('templates/header.php', $data);

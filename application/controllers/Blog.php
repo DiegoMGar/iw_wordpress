@@ -151,6 +151,7 @@ class Blog extends CI_Controller {
 
         $data['post'] = $post;
         $data['url'] = $url;
+        $data['title'] = 'Blog';
         $this->load->view('templates/header.php', $data);
 		$this->load->view('blog/edit_post.php', $data);
 	}
