@@ -18,15 +18,15 @@
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;border-right: 1px solid #f0f0f0;"
              id="userExit">
-            <a href="<?php echo base_url($mylang.'/logout');?>">Salir</button></a>
+            <a href="<?php echo base_url($mylang.'/logout');?>"><?php echo $this->lang->line('header_logout'); ?></button></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
              id="userPerfil">
-            <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">Perfil</a>
+            <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
         </div>
         <div class="login openSansRegular hidden-xs" style="display: none;"
              id="userDash">
-            <a href="<?php echo base_url($mylang.'/dashboard'); ?>">Dashboard</a>
+            <a href="<?php echo base_url($mylang.'/dashboard'); ?>"><?php echo $this->lang->line('titulo_dashboard'); ?></a>
         </div>
     </div>
     <script>
@@ -48,40 +48,45 @@
         });
     </script>
 </header>
-<div class="container" style="margin-top: 70px;color: #404040;">
-    <div class="hidden-lg hidden-md hidden-sm col-xs-12 menuHidden">
-        <p>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard'); ?>">Dashboard</a>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">Perfil</a>
-            <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>">Salir</button></a>
-        </p>
+<div class="container" style="color: #404040;">
+    <div class="row">
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12 menuHidden">
+            <p>
+                <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard'); ?>"><?php echo $this->lang->line('titulo_dashboard'); ?></a>
+                <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
+                <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>"><?php echo $this->lang->line('header_logout'); ?></button></a>
+            </p>
+        </div>
     </div>
-    <div id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" class="animationFade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="text-center">Editando post</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form center-block" name="userLogin"
-                          action="<?php echo base_url($mylang.'/'.$url.'/post/'.$post['id'].'/modify');?>" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control input-lg" placeholder="Nombre de usuario"
-                                   name="titulo" value="<?php echo $post['title']; ?>" required>
+    <div class="row hidden-xs" style="margin-top: 70px;"></div>
+    <div class="row">
+        <div id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" class="animationFade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="text-center"><?php echo $this->lang->line('blog_model_title_modify'); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form center-block" name="userLogin"
+                              action="<?php echo base_url($mylang.'/'.$url.'/post/'.$post['id'].'/modify');?>" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" placeholder="<?php echo $this->lang->line('blog_model_post_title'); ?>"
+                                       name="titulo" value="<?php echo $post['title']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" name="contenido"
+                                          placeholder="<?php echo $this->lang->line('blog_model_post_content'); ?>" required><?php echo $post['content']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit"><?php echo $this->lang->line('blog_model_post_save'); ?></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-12">
+                            <a class="btn btn-default" href="<?php echo base_url($mylang.'/'.$url);?>"
+                               data-dismiss="modal" aria-hidden="true" ><?php echo $this->lang->line('blog_model_post_close'); ?></a>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" name="contenido"
-                                      placeholder="Contenido" required><?php echo $post['content']; ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">Guardar</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-md-12">
-                        <a class="btn btn-default" href="<?php echo base_url($mylang.'/'.$url);?>"
-                           data-dismiss="modal" aria-hidden="true" >Cancelar</a>
                     </div>
                 </div>
             </div>

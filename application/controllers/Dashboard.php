@@ -20,6 +20,7 @@ class Dashboard extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $this->lang->load('general',$idiom);
 
         if($this->session->logged_in == TRUE)
         {
@@ -46,15 +47,10 @@ class Dashboard extends CI_Controller {
             $data['error'] = $this->session->flashdata('error');
             $this->load->view('templates/header.php', $data);
             $this->load->view('dashboard/dashboard.php',$data);
-        }
-
-        else
+        }else
         {
             redirect(base_url($mylang.'/login'));
         }
-
-
-
 	}
 
     public function logout($mylang='es') {
@@ -79,6 +75,7 @@ class Dashboard extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $this->lang->load('general',$idiom);
         $urlDomain = $this->input->post('url');
         $tituloBlog = $this->input->post('titulo');
         $descripcionBlog = $this->input->post('descripcion');
@@ -89,7 +86,7 @@ class Dashboard extends CI_Controller {
         $contador = 0;
         foreach ($result->result() as $row) $contador++;
         if($contador>0){
-            $this->session->set_flashdata('error', 'Ese dominio está ocupado por otro usuario.');
+            $this->session->set_flashdata('error', $this->lang->line('dominioUsado'));
         }
 
         else
@@ -131,6 +128,7 @@ class Dashboard extends CI_Controller {
         else
             $idiom='english';
         $data['mylang']=$mylang;
+        $this->lang->load('general',$idiom);
 
         $sql = "
             select domains.url, domains.oid dID, blogs.oid bID, blogs.title, blogs.description from domains
@@ -165,6 +163,7 @@ class Dashboard extends CI_Controller {
             $idiom='spanish';
         else
             $idiom='english';
+        $this->lang->load('general',$idiom);
         $newURL = $this->input->post('url');
 
         $sql = "select oid from domains where url = '{$newURL}' and oid <> {$blogID} limit 1";

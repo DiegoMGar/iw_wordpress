@@ -61,6 +61,7 @@ $lang['activity_date'] = 'Fecha';
 $lang['actions_title'] = 'Acciones';
 $lang['actions_button'] = 'Abrir blog';
 $lang['actions_model_title'] = 'Crea tu nuevo Dominio & Blog';
+$lang['editing_model_title'] = 'Modifica tu Dominio & Blog';
 $lang['actions_model__blog_title'] = 'Título';
 $lang['actions_model__blog_descr'] = 'Descripción';
 $lang['actions_model__blog_save'] = 'Guardar';
@@ -77,6 +78,7 @@ $lang['post_edit'] = 'Editar';
 $lang['post_delete'] = 'Eliminar';
 
 $lang['blog_model_title'] = 'Añade un nuevo post';
+$lang['blog_model_title_modify'] = 'Modifica tu post';
 $lang['blog_model_post_title'] = 'Título';
 $lang['blog_model_post_content'] = 'Contenido';
 $lang['blog_model_post_save'] = 'Guardar';

@@ -61,10 +61,11 @@ $lang['activity_date'] = 'Date';
 $lang['actions_title'] = 'Actions';
 $lang['actions_button'] = 'Create blog';
 $lang['actions_model_title'] = 'Create your new Domain & Blog';
+$lang['editing_model_title'] = 'Modify your Domain & Blog';
 $lang['actions_model__blog_title'] = 'Title';
 $lang['actions_model__blog_descr'] = 'Description';
 $lang['actions_model__blog_save'] = 'Save';
-$lang['actions_model__blog_close'] = 'Close';
+$lang['actions_model__blog_close'] = 'Cancel';
 
 
 
@@ -77,10 +78,11 @@ $lang['post_edit'] = 'Modify';
 $lang['post_delete'] = 'Delete';
 
 $lang['blog_model_title'] = 'Add new post';
+$lang['blog_model_title_modify'] = 'Modify your post';
 $lang['blog_model_post_title'] = 'Title';
 $lang['blog_model_post_content'] = 'Content';
 $lang['blog_model_post_save'] = 'Save';
-$lang['blog_model_post_close'] = 'Close';
+$lang['blog_model_post_close'] = 'Cancel';
 
 /* LOGIN */
 

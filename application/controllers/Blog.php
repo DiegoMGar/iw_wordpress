@@ -35,6 +35,7 @@ class Blog extends CI_Controller {
         else
             $idiom='english';
         $data['mylang'] = $mylang;
+        $this->lang->load('general',$idiom);
 		$sql = "
 			select domains.user, domains.url, blogs.oid, blogs.title, blogs.description from domains
             right join blogs on (blogs.domain = domains.oid)
@@ -134,6 +135,7 @@ class Blog extends CI_Controller {
         else
             $idiom='english';
         $data['mylang'] = $mylang;
+        $this->lang->load('general',$idiom);
 		$sql = "
 		select * from posts
 		where oid=$postId";
