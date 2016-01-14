@@ -167,7 +167,7 @@ footer.mainFooter>.container{
     cursor: pointer;
 }
 .tarjeta{
-    height: 150px;
+    height: 190px;
     padding-bottom: 10px;
     margin-bottom: 15px;
     color: #262626;
@@ -205,7 +205,7 @@ footer.mainFooter>.container{
     background: -ms-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(237,237,237,1) 47%, rgba(233,233,233,1) 80%, rgba(230,230,230,1) 100%);
     background: linear-gradient(to bottom, rgba(237,237,237,1) 0%, rgba(237,237,237,1) 47%, rgba(233,233,233,1) 80%, rgba(230,230,230,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#e6e6e6', GradientType=0 );
-    padding-top: 3%;
+    padding: 3% 5px 0 5px;
 }
 .accionesTarjeta{
     position: absolute;

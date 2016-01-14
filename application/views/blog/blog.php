@@ -9,7 +9,7 @@
         <div class="tituloLogo">
             <a href="<?php echo base_url($mylang); ?>">WordPress<span style="color: rgba(255, 255, 255, 0.6); ">.com</span></a>
         </div>
-        <?php if(empty($userOK)) goto noAdmin;?>
+        <?php if(!$this->read_session->isSessionActive()) goto noAdmin;?>
         <div class="login openSansRegular">
             <p style="cursor: pointer;font-size: 1.1em;"
                id="openUserMenu"
@@ -151,7 +151,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="<?php echo $this->lang->line('blog_model_post_title'); ?>" name="titulo" required
-                               maxlength="25">
+                               maxlength="120">
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="5" name="contenido" placeholder="<?php echo $this->lang->line('blog_model_post_content'); ?>"></textarea>
@@ -165,14 +165,4 @@
     </div>
 </div>
 </form>
-<script>
-    $().ready(function(){
-        $('#saveBut').click(function(e) {
-            if ($('input').val() === '') {
-                e.preventDefault();
-                alert('input is empty');
-            }
-        });
-    });
-</script>
 

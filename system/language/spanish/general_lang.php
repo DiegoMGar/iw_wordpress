@@ -117,3 +117,7 @@ $lang['error'] = 'Error en la base de datos logueando al nuevo usuario.';
 
 $lang['userNotFound'] = 'No se ha podido encontrar al usuario.';
 $lang['userNotAllowed'] = 'No tienes permiso para revisar el perfil de este usuario.';
+$lang['strongWAJAX'] = 'Warning';
+$lang['msgWAJAX'] = 'No hay resultados para esta búsqueda.';
+$lang['search'] = 'Buscar';
+$lang['nav_search'] = 'Buscar';

@@ -89,7 +89,7 @@ $lang['blog_model_post_close'] = 'Cancel';
 
 $lang['volver'] = 'Back';
 $lang['login'] = 'Log In';
-$lang['email'] = 'User\'s email';
+$lang['email'] = 'Users email';
 $lang['password'] = 'Password';
 $lang['entrar'] = 'Send';
 $lang['registro'] = 'Register';
@@ -117,3 +117,7 @@ $lang['error'] = 'Error in databases login the new user.';
 
 $lang['userNotFound'] = 'The user was not found.';
 $lang['userNotAllowed'] = 'See this user is not allowed to you.';
+$lang['strongWAJAX'] = 'Warning';
+$lang['msgWAJAX'] = 'There is no results for this search.';
+$lang['search'] = 'Search';
+$lang['nav_search'] = 'Search';

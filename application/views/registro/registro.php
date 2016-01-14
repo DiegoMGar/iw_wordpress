@@ -35,7 +35,7 @@
             <h4 style="color: #87a6bc;margin-top: 45px;margin-bottom: 35px;"><?php echo $this->lang->line('titulo3');?></h4>
             <input type="text" placeholder="<?php echo $this->lang->line('blog');?>" class="form-control" id="titulo" name="titulo" />
         </div>
-        <hr style="margin-top: 50px;margin-bottom: 50px;">
+        <hr style="margin-top: 50px;margin-bottom: 20px;">
         <div class="form-group">
             <h3><?php echo $this->lang->line('titulo4');?></h3>
             <h4 style="color: #87a6bc;margin-top: 25px;margin-bottom: 35px;"><?php echo $this->lang->line('titulo5');?></h4>

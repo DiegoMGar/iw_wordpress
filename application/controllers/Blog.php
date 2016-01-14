@@ -58,7 +58,8 @@ class Blog extends CI_Controller {
 
 		$sql2 = "
 		select * from posts
-		where blog=$blogOID";
+		where blog=$blogOID
+		order by date desc";
 
         $post = $this->db->query($sql2);
 

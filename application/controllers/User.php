@@ -44,7 +44,7 @@ class User extends CI_Controller {
             $data['title'] = 'Dashboard';
             $data['user'] = $user;
         	$this->load->view('templates/header.php', $data);
-            $this->load->view('profile.php');
+            $this->load->view('profile/profile.php');
         }else
         {
             show_error($this->lang->line('userNotFound'));

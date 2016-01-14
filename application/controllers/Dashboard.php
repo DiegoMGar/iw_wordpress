@@ -30,7 +30,8 @@ class Dashboard extends CI_Controller {
                 select * from domains
                 left join blogs on (blogs.domain = domains.oid)
                where blogs.oid is not null
-               and domains.user = $oid";
+               and domains.user = $oid
+			   order by domains.url asc";
             $query = $this->db->query($sql);
 
             $sql = "

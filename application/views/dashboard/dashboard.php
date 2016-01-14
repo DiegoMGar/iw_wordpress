@@ -24,16 +24,22 @@
              id="userPerfil">
             <a href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>"><?php echo $this->lang->line('header_profile'); ?></a>
         </div>
+        <div class="login openSansRegular hidden-xs" style="display: none;"
+             id="userBlog">
+            <a data-toggle="modal" data-target="#addDomainBlog">
+                <?php echo $this->lang->line('actions_button'); ?></a>
+        </div>
     </div>
 </header>
 <div class="container" style="color: #404040;">
     <div class="hidden-lg hidden-md hidden-sm col-xs-12 menuHidden">
         <p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
+                <?php echo $this->lang->line('actions_button'); ?></button>
             <a class="btn btn-primary" href="<?php echo base_url($mylang.'/user/'.$this->session->id); ?>">
-                <?php $this->lang->line('header_profile'); ?></a>
+                <?php echo $this->lang->line('header_profile'); ?></a>
             <a class="btn btn-primary" href="<?php echo base_url($mylang.'/dashboard/logout');?>">
-                <?php $this->lang->line('header_logout'); ?></button></a>
-        </p>
+                <?php echo $this->lang->line('header_logout'); ?></button></a>
     </div>
     <h1 style="margin-top: 70px;"><?php echo $this->lang->line('titulo_dashboard'); ?></h1>
     <?php
@@ -46,7 +52,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">Blogs</a></li>
         <li><a data-toggle="tab" href="#menu2"><?php echo $this->lang->line('nav_activity'); ?></a></li>
-        <li><a data-toggle="tab" href="#menu3"><?php echo $this->lang->line('nav_actions'); ?></a></li>
+        <li><a data-toggle="tab" href="#menu3"><?php echo $this->lang->line('nav_search'); ?></a></li>
     </ul>
     <div class="tab-content">
         <div id="menu1" class="tab-pane fade in active">
@@ -69,8 +75,8 @@
                     </a></p>
                 </div>
                 <div class='contenido' id='contenidoTarjeta'>
-                    <h2>{$row->title}</h2>
                     <h4><a href='{$urlBlog}'>{$row->url}</a></h4>
+                    <h2>{$row->title}</h2>
                 </div>
                 <div class='contenido' style='background-color: red;top: -100px;left: 0;'>
 
@@ -105,10 +111,18 @@
             </table>
         </div>
         <div id="menu3" class="tab-pane fade">
-            <h3 style="margin-bottom: 20px;"><?php echo $this->lang->line('nav_actions'); ?></h3>
-            <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDomainBlog">
-                    <?php echo $this->lang->line('actions_button'); ?>
-                </button></p>
+            <h3 style="margin-bottom: 20px;"><?php echo $this->lang->line('nav_search'); ?></h3>
+            <div class="col-xs-12" style="margin-bottom: 20px;">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><?php echo $this->lang->line('search'); ?></span>
+                    <input type="text" class="form-control" id="searchInput"
+                           placeholder="<?php echo $this->lang->line('dominio'); ?>"
+                           aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-xs-12" id="contenedorBusqueda">
+
+            </div>
         </div>
     </div>
 </div>
@@ -126,11 +140,11 @@
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="<?php echo $this->lang->line('dominio'); ?>" name="url" required
-                  maxlength="15">
+                  maxlength="50">
             </div>
             <div class="form-group">
               <input type="text" class="form-control input-lg" placeholder="<?php echo $this->lang->line('actions_model__blog_title'); ?>" name="titulo" required
-                     maxlength="25">
+                     maxlength="120">
             </div>
             <div class="form-group">
               <textarea class="form-control" rows="5" name="descripcion" placeholder="<?php echo $this->lang->line('actions_model__blog_descr'); ?>"></textarea>
@@ -150,6 +164,7 @@
         $("#openUserMenu").click(function(){
             $("#userPerfil").slideToggle();
             $("#userExit").slideToggle();
+            $("#userBlog").slideToggle();
             var menuDownUp = $(this).find("span");
             if($(menuDownUp).hasClass("glyphicon-menu-down")){
                 $(menuDownUp).removeClass("glyphicon-menu-down");
@@ -167,12 +182,30 @@
             var divBotones =$(this).find("#accionesTarjeta");
             $(divBotones).slideUp();
         });
-    });
-    $('#saveBut').click(function(e) {
-      if ($('input').val() === '') {
-        e.preventDefault();
-        alert('input is empty');
-      }
+        var search = '';
+        $("#searchInput").on("keyup", function() {
+            search = $( this ).val();
+            console.log(search);
+            var request = $.ajax({
+                url: "<?php echo base_url($mylang.'/search');?>",
+                method: "POST",
+                data: { query : search },
+                dataType: "html"
+            });
+
+            request.done(function( msg ) {
+                console.log("Ajax correcto.");
+                $( "#contenedorBusqueda" ).html( msg );
+                $( "#contenedorBusqueda" ).find('.tarjeta').fadeIn('slow');
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+                console.log("Error en el ajax.");
+                <?php $mensajeError = "<div style='display: none;' class='alert alert-warning'><strong>{$this->lang->line('strongWAJAX')}</strong> {$this->lang->line('msgWAJAX')}</div>";?>
+                $( "#contenedorBusqueda" ).html("<?php echo $mensajeError;?>");
+                $( "#contenedorBusqueda" ).find('div').fadeIn('slow');
+            });
+        });
     });
 </script>
 </body>
