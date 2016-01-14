@@ -196,7 +196,7 @@
             request.done(function( msg ) {
                 console.log("Ajax correcto.");
                 $( "#contenedorBusqueda" ).html( msg );
-                $( "#contenedorBusqueda" ).find('.tarjeta').fadeIn('slow');
+                $( "#contenedorBusqueda" ).find('div').fadeIn('slow');
             });
 
             request.fail(function( jqXHR, textStatus ) {
